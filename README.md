@@ -7,3 +7,7 @@
 - Class Diagram
 
 ![Class Diagram](/img/class-diagram.png)
+
+- Api Specification
+
+[spec](https://documenter.getpostman.com/view/4795674/TzsZsUEk)
