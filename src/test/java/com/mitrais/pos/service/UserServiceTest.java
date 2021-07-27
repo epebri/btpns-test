@@ -27,7 +27,7 @@ public class UserServiceTest {
         Mockito.when(userRepository.findByIdAndRole(1L, Role.CHEF.name()))
                 .thenReturn(Optional.of(new User(1L, "chef", "CHEF")));
 
-        Optional<User> user = userService.getUserById(1L, Role.CHEF);
+        Optional<User> user = userService.getUserByIdAndRole(1L, Role.CHEF);
 
         Assertions.assertNotNull(user);
         Assertions.assertEquals(1L, user.get().getId());
@@ -38,7 +38,7 @@ public class UserServiceTest {
         Mockito.when(userRepository.findByIdAndRole(2L, Role.WAITER.name()))
                 .thenReturn(Optional.of(new User(2L, "chef", "WAITER")));
 
-        Optional<User> user = userService.getUserById(2L, Role.WAITER);
+        Optional<User> user = userService.getUserByIdAndRole(2L, Role.WAITER);
 
         Assertions.assertNotNull(user);
         Assertions.assertEquals(2L, user.get().getId());

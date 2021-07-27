@@ -6,5 +6,5 @@ import com.mitrais.pos.model.en.Role;
 import java.util.Optional;
 
 public interface UserService {
-    Optional<User> getUserById(Long id, Role role);
+    Optional<User> getUserByIdAndRole(Long id, Role role);
 }

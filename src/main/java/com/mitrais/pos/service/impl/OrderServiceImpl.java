@@ -43,14 +43,14 @@ public class OrderServiceImpl implements OrderService {
     public Order createOrder(OrderRequest request) throws Exception {
         Order order = new Order();
         order.setTotal(request.getTotal());
-        Optional<User> chef = userService.getUserById(request.getChefId(), Role.CHEF);
+        Optional<User> chef = userService.getUserByIdAndRole(request.getChefId(), Role.CHEF);
         if (chef.isPresent()) {
             order.setChefId(chef.get().getId());
         } else {
             throw new Exception("Chef id not valid");
         }
 
-        Optional<User> waiter = userService.getUserById(request.getWaiterId(), Role.WAITER);
+        Optional<User> waiter = userService.getUserByIdAndRole(request.getWaiterId(), Role.WAITER);
         if (waiter.isPresent()) {
             order.setWaiterId(waiter.get().getId());
         } else {
@@ -75,21 +75,21 @@ public class OrderServiceImpl implements OrderService {
     public Order processOrder(Long id, ProcessRequest request) throws Exception {
         Order order = orderRepository.getById(id);
         if (order.getStatus().equals(Status.CREATED.name())) {
-            Optional<User> chef = userService.getUserById(request.getUserId(), Role.CHEF);
+            Optional<User> chef = userService.getUserByIdAndRole(request.getUserId(), Role.CHEF);
             if (chef.isPresent()) {
                 order.setStatus(Status.PROCESS.name());
             } else {
                 throw new Exception("Process order failed");
             }
         } else if (order.getStatus().equals(Status.PROCESS.name())) {
-            Optional<User> chef = userService.getUserById(request.getUserId(), Role.CHEF);
+            Optional<User> chef = userService.getUserByIdAndRole(request.getUserId(), Role.CHEF);
             if (chef.isPresent()) {
                 order.setStatus(Status.SERVED.name());
             } else {
                 throw new Exception("Process order failed");
             }
         } else if (order.getStatus().equals(Status.SERVED.name())) {
-            Optional<User> waiter = userService.getUserById(request.getUserId(), Role.WAITER);
+            Optional<User> waiter = userService.getUserByIdAndRole(request.getUserId(), Role.WAITER);
             if (waiter.isPresent()) {
                 order.setStatus(Status.CLOSED.name());
             } else {

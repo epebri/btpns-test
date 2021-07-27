@@ -62,10 +62,10 @@ class OrderServiceTest {
         order.setChefId(1L);
         order.setWaiterId(2L);
 
-        Mockito.when(userService.getUserById(1L, Role.CHEF))
+        Mockito.when(userService.getUserByIdAndRole(1L, Role.CHEF))
                 .thenReturn(Optional.of(new User(1L, "chef", Role.CHEF.name())));
 
-        Mockito.when(userService.getUserById(2L, Role.WAITER))
+        Mockito.when(userService.getUserByIdAndRole(2L, Role.WAITER))
                 .thenReturn(Optional.of(new User(2L, "waiter", Role.WAITER.name())));
 
         Mockito.when(menuService.getMenuById(1L))
@@ -123,7 +123,7 @@ class OrderServiceTest {
         Mockito.when(orderRepository.save(updateData))
                 .thenReturn(updateData);
 
-        Mockito.when(userService.getUserById(1L, Role.CHEF))
+        Mockito.when(userService.getUserByIdAndRole(1L, Role.CHEF))
                 .thenReturn(Optional.of(new User(1L, "chef", Role.CHEF.name())));
 
         Order response = orderService.processOrder(1L, new ProcessRequest(1L));

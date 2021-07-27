@@ -15,7 +15,7 @@ public class UserServiceImpl implements UserService {
     UserRepository userRepository;
 
     @Override
-    public Optional<User> getUserById(Long id, Role role) {
+    public Optional<User> getUserByIdAndRole(Long id, Role role) {
         return userRepository.findByIdAndRole(id, role.name());
     }
 }

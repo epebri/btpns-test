@@ -8,9 +8,8 @@
 
 ![Class Diagram](/img/class-diagram.png)
 
-- Api Specification
+- Api Specification [[link]](https://documenter.getpostman.com/view/4795674/TzsZsUEk)
 
-[spec](https://documenter.getpostman.com/view/4795674/TzsZsUEk)
 
 - How to build apps as image container.
 
