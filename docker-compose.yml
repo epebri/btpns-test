@@ -1,0 +1,10 @@
+version: '2'
+services:
+  web-server:
+    container_name: spring-backend
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spring-api-backend:0.0.1
+    ports:
+      - 80:8081
